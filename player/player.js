@@ -47,7 +47,7 @@ if(player_data.from=='iframe'){
 var ifhtml = "<iframe class='ifplayer' width='100%' src='"+ifurl+"' frameborder='0' border='0' marginwidth='0' marginheight='0' scrolling='no'  allowfullscreen='true'></iframe>";
 
 if(!player_data.from||!player_data.url){
-	ifhtml = '<img  class="ifplayer" style="width: auto; height: auto; max-width: 100%;" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-ab498c51-8871-421b-8e23-a43eaa306dff/4393087e-5af1-4570-9a21-90a8b4dfe182.jpg" >';
+	ifhtml = '<img  class="ifplayer" style="width: auto; height: auto; max-width: 100%;" src="https://pic.rmb.bdstatic.com/bjh/news//528744ff20fc5e757a88fa5f98e0fe528482.jpeg" >';
  }
  
 referrer('always');
