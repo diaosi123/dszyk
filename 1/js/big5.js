@@ -1,4 +1,4 @@
-//模仿语言包式的简繁转换功能插件！
+﻿//模仿语言包式的简繁转换功能插件！
 //Edited by Stardy --2005-04-16 , Web :http://www.stardy.com , QQ:2885465
 
 var Default_isFT = 0		//默认是否繁体，0-简体，1-繁体
