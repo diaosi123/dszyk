@@ -143,7 +143,7 @@ var MAC={
     },
     'Qrcode':{
         'Init':function(){
-            $('.mac_qrcode').attr('src','//api.maccms.com/qrcode/?w=150&h=150&url=' + MAC.Url);
+            $('.mac_qrcode').attr('src', maccms.path +'/index.php/qrcode/index.html?url='+ MAC.Url);
         }
     },
     'Shorten': {
@@ -155,7 +155,7 @@ var MAC={
         },
         'Get':function(url,call){
             url=url||location.href;
-            MAC.Ajax('//api.maccms.com/shorten/?callback=callback&url='+ encodeURIComponent(url),'get','jsonp','',function(r){
+            MAC.Ajax('//api.maccms.la/shorten/index/url/'+ encodeURIComponent(url),'get','jsonp','',function(r){
                 if (r.code == 1) {
                     if($('.mac_shorten').length>0) {
                         $('.mac_shorten').val(r.data.url_short);
@@ -518,15 +518,14 @@ var MAC={
             $('.mac_history_box').html('<li class="hx_clear">已清空观看记录。</li>');
         },
     },
-
     'Ulog':{
         'Init':function(){
             MAC.Ulog.Set();
             MAC.Ulog.Click();
 
         },
-        'Get':function(type,page,limit,call){
-            MAC.Ajax(maccms.path+'/index.php/user/ajax_ulog/?ac=list&type='+type+'&page='+page+'&limit='+limit,'get','json','',call);
+        'Get':function(mid,id,type,page,limit,call){
+            MAC.Ajax(maccms.path+'/index.php/user/ajax_ulog/?ac=list&mid='+mid+'&id='+id+'&type='+type+'&page='+page+'&limit='+limit,'get','json','',call);
         },
         'Set':function(){
             if($(".mac_ulog_set").attr('data-mid')){
@@ -554,6 +553,29 @@ var MAC={
                         }
                     });
                 }
+            });
+        }
+    },
+    'Website':{
+        'Referer':function() {
+            if($('.mac_referer').length==0){
+                return;
+            }
+
+            var url = document.referrer
+                ,domain=''
+                ,host = window.location.host
+                ,reg = /^http(s)?:\/\/(.*?)\//i
+                ,mc = url.match(reg);
+
+            if(url=='' || url.indexOf(host)!=-1 || mc ==null){
+                return;
+            }
+            domain = mc[2];
+            MAC.Ajax(maccms.path + '/index.php/ajax/referer?domain='+encodeURIComponent(domain)+'&url='+encodeURIComponent(url)+'&type=update','get','json','',function(r){
+                if (r.code == 1) {
+                }
+                console.log(r);
             });
         }
     },
@@ -907,6 +929,8 @@ $(function(){
     MAC.Ulog.Init();
     //联想搜索初始化
     MAC.Suggest.Init('.mac_wd',1,'');
+    //网址导航来路统计
+    MAC.Website.Referer();
     //定时任务初始化
     MAC.Timming();
 });
