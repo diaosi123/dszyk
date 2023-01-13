@@ -1,4 +1,4 @@
-$(document).ready(function($){
+﻿$(document).ready(function($){
     var recente=$.cookie("recente");
     var len=0;
     var canadd=true;
