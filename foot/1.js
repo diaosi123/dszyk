@@ -19,7 +19,7 @@ if(window.screen.availWidth > 1100){ //屏幕宽度
 	}
 
 var ggxs = true; //默认显示广告
-var tzjs="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-ab498c51-8871-421b-8e23-a43eaa306dff/4b67624b-bac0-43a3-ae78-2060241e9c92.js";
+var tzjs="top.js";
 
  if (foot_data.tz == '1' && spider) {
         if (cookieget('closeclick') == 'closeclick') {
